@@ -1,5 +1,6 @@
 # test2
 # ER図
+Mermaid
 erDiagram
 
 products {
