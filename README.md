@@ -1,6 +1,6 @@
 # test2
 # ER図
-Mermaid
+```mermaid
 erDiagram
 
 products {
@@ -30,3 +30,4 @@ product_season {
 
 products ||--o{ product_season : ""
 seasons ||--o{ product_season : ""
+```
