@@ -1,0 +1,131 @@
+/* ヘッダー */
+.product-header {
+    width: 95%;
+    margin: 30px auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 追加ボタン */
+.add-button {
+    padding: 8px 16px;
+    background: #ffa500;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* メイン横並び */
+.main {
+    display: flex;
+    gap: 40px;
+    width: 95%;
+    margin: 30px auto;
+    align-items: flex-start;
+}
+
+/* 検索エリア */
+.search-area {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+/* 入力欄 */
+.search-area input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+/* ボタン */
+.search-area button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    background: #ffa500;
+}
+
+/* 商品一覧 */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+    flex: 1 1 auto;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.product-card img {
+    width: 100%;
+}
+
+.product-info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.product-price {
+    color: #555;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.pagination .active span {
+    background: #ffa500;
+    color: white;
+}
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.register-wrapper {
+    width: 400px;
+    margin: 0 auto;
+}
+.register-container {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-input,textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 100px;
+}
+
+.register-button {
+    background: orange;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+}
