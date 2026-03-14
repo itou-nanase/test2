@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Season;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -42,7 +45,16 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.show', compact('product'));
+        $seasons = Season::all();
+        
+         // 商品に紐づく季節IDを配列で取得
+        $productSeasons = DB::table('product_season')
+            ->where('product_id', $id)
+            ->pluck('season_id')
+            ->toArray();
+
+
+        return view('products.show', compact('product','seasons','productSeasons'));
     }
 
     // 商品登録画面
@@ -53,16 +65,26 @@ class ProductController extends Controller
     }
 
     // 商品登録処理
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $product = Product::create($request->only([
-            'name',
-            'price',
-            'image',
-            'description'
-        ]));
+        // 画像保存
+        $image_Path = $request->file('image')->store('images');
 
-        $product->seasons()->attach($request->seasons);
+        if ($request->hasFile('image')) {
+            $image_Path = $request->file('image')->store('images', 'public');
+        } else {
+            $image_Path = null;
+        }
+
+        //商品保存
+        $product = Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'image' => $image_Path,
+            'description' => $request->description,
+        ]);
+
+        $product->seasons()->attach($request->season);
 
         return redirect('/products');
     }
@@ -77,18 +99,22 @@ class ProductController extends Controller
     }
 
     // 商品更新
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
 
-        $product->update($request->only([
+        $data = $request->only([
             'name',
             'price',
-            'image',
             'description'
-        ]));
+        ]);
 
-        $product->seasons()->sync($request->seasons);
+        if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('images', 'public');
+        $data['image'] = $path;
+        }
+
+        $product->update($data);
 
         return redirect('/products');
     }
@@ -96,7 +122,12 @@ class ProductController extends Controller
     // 削除
     public function destroy($id)
     {
-        Product::destroy($id);
-        return redirect('/products');
+    $product = Product::findOrFail($id);
+
+    Storage::disk('public')->delete($product->image);
+
+    $product->delete();
+
+    return redirect('/products');
     }
 }

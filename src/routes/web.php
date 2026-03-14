@@ -17,7 +17,7 @@ Route::get('/products', [ProductController::class,'index']);
 Route::get('/products/search', [ProductController::class, 'search']);
 
 Route::get('/products/register', [ProductController::class,'create']);
-Route::post('/products/register', [ProductController::class,'store']);
+Route::post('/products/store', [ProductController::class,'store']);
 
 Route::get('/products/detail/{id}', [ProductController::class,'show']);
 
