@@ -7,11 +7,6 @@ use App\Models\Season;
 
 class SeasonSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Season::create(['name' => '春']);

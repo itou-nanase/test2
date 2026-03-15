@@ -54,7 +54,7 @@
         @foreach ($seasons as $season)
         <label>
             <input type="checkbox" name="season[]" value="{{ $season->id }}"
-            {{ in_array(1, old('season', [])) ? 'checked' : '' }}>
+            {{ in_array($season->id, old('season', [])) ? 'checked' : '' }}>
             {{ $season->name }}
         </label>
         @endforeach

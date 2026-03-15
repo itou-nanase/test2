@@ -9,7 +9,7 @@
         <div class="image-area">
         
         @if($product->image)
-            <img id="preview" src="{{ asset('storage/' . $product->image) }}" class="product-image">
+            <img id="preview" src="{{ asset($product->image) }}" class="product-image">
         @endif
         
         <input type="file" name="image">

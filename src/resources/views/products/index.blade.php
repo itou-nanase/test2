@@ -35,7 +35,7 @@
 
             <div class="product-card" onclick="location.href='/products/detail/{{ $product->id }}'">
 
-                <img src="{{ asset('storage/' . $product->image) }}" alt="商品画像">
+                <img src="{{ asset($product->image) }}" alt="商品画像">
 
                 <div class="product-info">
                     <p class="product-name">{{ $product->name }}</p>
