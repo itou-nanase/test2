@@ -12,7 +12,7 @@
 1. docker-compose exec php bash
 2. composer install
 3. cp .env.example .env
-4. .envファイルの変更
+4. .envファイルの下記項目を変更
    DB_CONNECTION=mysql
    DB_HOST=mysql
    DB_PORT=3306
