@@ -12,9 +12,16 @@
 1. docker-compose exec php bash
 2. composer install
 3. cp .env.example .env
-4. php artisan key:generate
-5. php artisan migrate
-6. php artisan db:seed
+4. .envファイルの変更
+   DB_CONNECTION=mysql
+   DB_HOST=mysql
+   DB_PORT=3306
+   DB_DATABASE=laravel_db
+   DB_USERNAME=laravel_user
+   DB_PASSWORD=laravel_pass
+5. php artisan key:generate
+6. php artisan migrate
+7. php artisan db:seed
 
 ## 使用技術
 - PHP 8.x
