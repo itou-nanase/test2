@@ -22,10 +22,14 @@
         </select>
         </form>
         @if(request('sort') == 'high')
-            <p class="sort-result">高い順に表示</p>
+            <p class="sort-result">高い順に表示
+                <a href="{{ route('products', request()->except('sort')) }}" class="reset-sort">×</a>
+            </p>
         @endif
         @if(request('sort') == 'low')
-            <p class="sort-result">低い順に表示</p>
+            <p class="sort-result">低い順に表示
+                <a href="{{ route('products.search', request()->except('sort')) }}" class="reset-sort">×</a>
+            </p>
         @endif            
     </div>
 
@@ -35,7 +39,7 @@
 
             <div class="product-card" onclick="location.href='/products/detail/{{ $product->id }}'">
 
-                <img src="{{ asset($product->image) }}" alt="商品画像">
+               <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
 
                 <div class="product-info">
                     <p class="product-name">{{ $product->name }}</p>

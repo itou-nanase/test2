@@ -68,12 +68,16 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         // 画像保存
-        $image_Path = $request->file('image')->store('images');
-
         if ($request->hasFile('image')) {
+        // ユーザーが画像をアップロードした場合
             $image_Path = $request->file('image')->store('images', 'public');
         } else {
-            $image_Path = null;
+            // アップロードなし → フォームに初期値があればそれを使う
+            $image_Path = $request->input('image'); 
+            if (!$image_Path) {
+            // 初期値がなければデフォルト画像
+            $image_Path = 'images/kiwi.png';
+            }
         }
 
         //商品保存

@@ -9,9 +9,9 @@ class SeasonSeeder extends Seeder
 {
     public function run()
     {
-        Season::create(['name' => '春']);
-        Season::create(['name' => '夏']);
-        Season::create(['name' => '秋']);
-        Season::create(['name' => '冬']);
+        Season::firstOrCreate(['name' => '春']);
+        Season::firstOrCreate(['name' => '夏']);
+        Season::firstOrCreate(['name' => '秋']);
+        Season::firstOrCreate(['name' => '冬']);
     }
 }

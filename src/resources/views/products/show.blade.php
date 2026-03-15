@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="breadcrumb">
+    <a href="{{ route('products.index') }}">商品詳細</a> &gt;
+    <span>{{ $product->name }}</span>
+</div>
+
 <form action="/products/{{ $product->id }}/update" method="post" enctype="multipart/form-data">
     @csrf
 
@@ -9,7 +15,7 @@
         <div class="image-area">
         
         @if($product->image)
-            <img id="preview" src="{{ asset($product->image) }}" class="product-image">
+            <img id="preview" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
         @endif
         
         <input type="file" name="image">

@@ -46,6 +46,13 @@
     background: #ffa500;
 }
 
+.sort-result {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+}
+
 /* 商品一覧 */
 .product-list {
     display: grid;
@@ -166,6 +173,25 @@ textarea {
     margin: auto;
 }
 
+.breadcrumb {
+    margin-bottom: 20px;
+    /* 上下の余白 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #555;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #000;
+}
 
 .top-area {
     display: flex;

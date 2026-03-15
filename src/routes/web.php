@@ -13,15 +13,14 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/products', [ProductController::class,'index']);
-Route::get('/products/search', [ProductController::class, 'search']);
+Route::get('/products', [ProductController::class,'index'])->name('products.index');
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 
-Route::get('/products/register', [ProductController::class,'create']);
-Route::post('/products/store', [ProductController::class,'store']);
+Route::get('/products/register', [ProductController::class,'create'])->name('products.create');
+Route::post('/products/store', [ProductController::class,'store'])->name('products.store');
 
-Route::get('/products/detail/{id}', [ProductController::class,'show']);
+Route::get('/products/detail/{id}', [ProductController::class,'show'])->name('products.show');
 
-Route::get('/products/{id}/update', [ProductController::class,'edit']);
-Route::post('/products/{id}/update', [ProductController::class,'update']);
+Route::post('/products/{id}/update', [ProductController::class,'update'])->name('products.update');
 
-Route::delete('/products/{id}/delete', [ProductController::class,'destroy']);
+Route::delete('/products/{id}/delete', [ProductController::class,'destroy'])->name('products.destroy');
